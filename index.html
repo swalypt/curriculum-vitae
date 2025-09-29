@@ -17,6 +17,7 @@
       color: cecece;
       padding: 30px;
       text-align: center;
+      position: relative;
     }
     header h1 {
       margin: 10px 0 5px 0;
@@ -65,78 +66,217 @@
     .github-link:hover {
       text-decoration: underline;
     }
+    .lang-button {
+      background: none;
+      border: none;
+      font-size: 24px;
+      cursor: pointer;
+      margin-left: 10px;
+      vertical-align: middle;
+    }
+    .language-text {
+      font-size: 14px;
+      margin-top: 10px;
+    }
+    .language-switcher {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      text-align: right;
+    }
+    .language-switcher p {
+      font-size: 14px;
+      margin: 0 0 5px 0;
+    }
   </style>
 </head>
 <body>
   <header>
     <img src="foto.JPG" alt="Foto de perfil" class="foto-perfil">
-    <h1>Simão Henriques</h1>
-    <p>Email: henriquessimao10@gmail.com | Email Instituicional: sp.henriques@campus.fct.unl.pt</p>
+    <h1 id="header-name">Simão Henriques</h1>
+    <p id="header-email">Email: henriquessimao10@gmail.com | Email Instituicional: sp.henriques@campus.fct.unl.pt</p>
     <p>
       <a href="https://github.com/swalypt" target="_blank" class="github-link">Github</a>
     </p>
+    <div class="language-switcher">
+      <p id="language-text"></p>
+      <button class="lang-button" onclick="setLanguage('pt')" aria-label="Português">🇵🇹</button>
+      <button class="lang-button" onclick="setLanguage('en')" aria-label="English">🇬🇧</button>
+    </div>
   </header>
 
   <section>
-    <h2>Sobre mim</h2>
-    <p>Sou o Simão tenho 21 anos e sou estudante de Engenharia Informática na Nova FCT. Além disso pratico voleibol e tenho outros interesses como futebol, música, podcasts de comédia e filmes/séries.</p>
+    <h2 id="about-title"></h2>
+    <p id="about-text"></p>
   </section>
 
   <section>
-    <h2>Educação</h2>
-    <ul>
-      <li><strong>Licenciatura em Engenharia Informática</strong> – Universidade de Ciências e Tecnologias Nova de Lisboa (2022 - presente)</li>
-      <li><strong>Ensino Secundário, área das Ciências e Tecnologias</strong> – Escola Secundária do Cartaxo (2019 - 2022)</li>
-    </ul>
+    <h2 id="education-title"></h2>
+    <ul id="education-list"></ul>
   </section>
 
   <section>
-    <h2>Competências Linguísticas</h2>
-    <ul>
-      <li>Espanhol B2</li>
-      <li>Inglês A1</li>
-      <li>Português - Língua materna</li>
-    </ul>
+    <h2 id="language-skills-title"></h2>
+    <ul id="language-skills-list"></ul>
   </section>
 
   <section>
-    <h2>Competências Técnicas</h2>
-    <ul>
-      <li>Álgebra Linear, Geometria Analítica e Descritiva</li>
-      <li>Algoritmos e Estruturas de Dados</li>
-      <li>Análise Matemática | Cálculo</li>
-      <li>Arquitetura de Computadores</li>
-      <li>Bases de Dados</li>
-      <li>Computação Gráfica de Interfaces</li>
-      <li>Física</li>
-      <li>Fundamentos de Sistemas de Operação</li>
-      <li>Inteligência Artificial</li>
-      <li>Lógica Computacional</li>
-      <li>Matemática Discreta</li>
-      <li>Programação Orientada por Objetos</li>
-      <li>Java e C - Nível Alto</li>
-      <li>Javascript, CSS e OCaml - Nível Médio/Baixo</li>
-      <li>Redes de Computadores</li>
-      <li>Sistemas Lógicos e Digitais</li>
-      <li>Teoria da Computação</li>
-    </ul>
+    <h2 id="technical-skills-title"></h2>
+    <ul id="technical-skills-list"></ul>
   </section>
 
   <section>
-    <h2>Competências Transversais</h2>
-    <ul>
-      <li>Adaptabilidade e flexibilidade</li>
-      <li>Empatia e capacidade de escuta</li>
-      <li>Liderança</li>
-      <li>Organização e gestão do tempo</li>
-      <li>Proatividade</li>
-      <li>Resolução de problemas</li>
-      <li>Trabalho em equipa</li>
-    </ul>
+    <h2 id="soft-skills-title"></h2>
+    <ul id="soft-skills-list"></ul>
   </section>
 
-  <footer>
-    2025 - Simão Henriques
+  <footer id="footer-text">
   </footer>
+
+  <script>
+    const textos = {
+      pt: {
+        "header-name": "Simão Henriques",
+        "header-email": "Email: henriquessimao10@gmail.com | Email Instituicional: sp.henriques@campus.fct.unl.pt",
+        "about-title": "Sobre mim",
+        "about-text": "Sou o Simão tenho 21 anos e sou estudante de Engenharia Informática na Nova FCT. Além disso pratico voleibol e tenho outros interesses como futebol, música, podcasts de comédia e filmes/séries.",
+        "education-title": "Educação",
+        "education-list": [
+          "<strong>Licenciatura em Engenharia Informática</strong> – Universidade de Ciências e Tecnologias Nova de Lisboa (2022 - presente)",
+          "<strong>Ensino Secundário, área das Ciências e Tecnologias</strong> – Escola Secundária do Cartaxo (2019 - 2022)"
+        ],
+        "language-skills-title": "Competências Linguísticas",
+        "language-skills-list": [
+          "Espanhol B2",
+          "Inglês A1",
+          "Português - Língua materna"
+        ],
+        "technical-skills-title": "Competências Técnicas",
+        "technical-skills-list": [
+          "Álgebra Linear, Geometria Analítica e Descritiva",
+          "Algoritmos e Estruturas de Dados",
+          "Análise Matemática | Cálculo",
+          "Arquitetura de Computadores",
+          "Bases de Dados",
+          "Computação Gráfica de Interfaces",
+          "Física",
+          "Fundamentos de Sistemas de Operação",
+          "Inteligência Artificial",
+          "Lógica Computacional",
+          "Matemática Discreta",
+          "Programação Orientada por Objetos",
+          "Java e C - Nível Alto",
+          "Javascript, CSS e OCaml - Nível Médio/Baixo",
+          "Redes de Computadores",
+          "Sistemas Lógicos e Digitais",
+          "Teoria da Computação"
+        ],
+        "soft-skills-title": "Competências Transversais",
+        "soft-skills-list": [
+          "Adaptabilidade e flexibilidade",
+          "Empatia e capacidade de escuta",
+          "Liderança",
+          "Organização e gestão do tempo",
+          "Proatividade",
+          "Resolução de problemas",
+          "Trabalho em equipa"
+        ],
+        "footer-text": "2025 - Simão Henriques",
+        "language-text": "Mudar linguagem"
+      },
+      en: {
+        "header-name": "Simão Henriques",
+        "header-email": "Email: henriquessimao10@gmail.com | Institutional Email: sp.henriques@campus.fct.unl.pt",
+        "about-title": "About me",
+        "about-text": "I am Simão, 21 years old, and a Computer Engineering student at Nova FCT. Besides that, I play volleyball and have other interests such as soccer, music, comedy podcasts, and movies/series.",
+        "education-title": "Education",
+        "education-list": [
+          "<strong>Bachelor's Degree in Computer Engineering</strong> – Nova University of Lisbon, Faculty of Science and Technology (2022 - present)",
+          "<strong>High School, Science and Technology area</strong> – Cartaxo Secondary School (2019 - 2022)"
+        ],
+        "language-skills-title": "Language Skills",
+        "language-skills-list": [
+          "Spanish B2",
+          "English A1",
+          "Portuguese - Native language"
+        ],
+        "technical-skills-title": "Technical Skills",
+        "technical-skills-list": [
+          "Linear Algebra, Analytic and Descriptive Geometry",
+          "Algorithms and Data Structures",
+          "Mathematical Analysis | Calculus",
+          "Computer Architecture",
+          "Databases",
+          "Graphical User Interface Computing",
+          "Physics",
+          "Operating Systems Fundamentals",
+          "Artificial Intelligence",
+          "Computational Logic",
+          "Discrete Mathematics",
+          "Object-Oriented Programming",
+          "Java and C - Advanced Level",
+          "Javascript, CSS and OCaml - Intermediate/Basic Level",
+          "Computer Networks",
+          "Logical and Digital Systems",
+          "Theory of Computation"
+        ],
+        "soft-skills-title": "Soft Skills",
+        "soft-skills-list": [
+          "Adaptability and flexibility",
+          "Empathy and listening skills",
+          "Leadership",
+          "Organization and time management",
+          "Proactivity",
+          "Problem solving",
+          "Teamwork"
+        ],
+        "footer-text": "2025 - Simão Henriques",
+        "language-text": "Change language"
+      }
+    };
+
+    function setLanguage(lang) {
+      document.getElementById("header-name").textContent = textos[lang]["header-name"];
+      document.getElementById("header-email").textContent = textos[lang]["header-email"];
+      document.getElementById("about-title").textContent = textos[lang]["about-title"];
+      document.getElementById("about-text").textContent = textos[lang]["about-text"];
+      document.getElementById("education-title").textContent = textos[lang]["education-title"];
+      const edList = document.getElementById("education-list");
+      edList.innerHTML = "";
+      textos[lang]["education-list"].forEach(item => {
+        const li = document.createElement("li");
+        li.innerHTML = item;
+        edList.appendChild(li);
+      });
+      document.getElementById("language-skills-title").textContent = textos[lang]["language-skills-title"];
+      const langList = document.getElementById("language-skills-list");
+      langList.innerHTML = "";
+      textos[lang]["language-skills-list"].forEach(item => {
+        const li = document.createElement("li");
+        li.textContent = item;
+        langList.appendChild(li);
+      });
+      document.getElementById("technical-skills-title").textContent = textos[lang]["technical-skills-title"];
+      const techList = document.getElementById("technical-skills-list");
+      techList.innerHTML = "";
+      textos[lang]["technical-skills-list"].forEach(item => {
+        const li = document.createElement("li");
+        li.textContent = item;
+        techList.appendChild(li);
+      });
+      document.getElementById("soft-skills-title").textContent = textos[lang]["soft-skills-title"];
+      const softList = document.getElementById("soft-skills-list");
+      softList.innerHTML = "";
+      textos[lang]["soft-skills-list"].forEach(item => {
+        const li = document.createElement("li");
+        li.textContent = item;
+        softList.appendChild(li);
+      });
+      document.getElementById("footer-text").textContent = textos[lang]["footer-text"];
+      document.getElementById("language-text").textContent = textos[lang]["language-text"];
+    }
+
+    setLanguage('pt');
+  </script>
 </body>
 </html>
